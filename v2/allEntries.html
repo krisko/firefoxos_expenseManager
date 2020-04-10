@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Item</title>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+
+<link rel="stylesheet" type="text/css" href="style/headers.css"/>
+<link rel="stylesheet" type="text/css" href="style/lists.css" />
+<link rel="stylesheet" type="text/css" href="style/input_areas.css" />
+<link rel="stylesheet" type="text/css" href="style/confirm.css" />
+
+<script type="text/javascript" src="scripts/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="scripts/manageDB.js"></script>
+
+</head>
+
+<body>
+
+
+<section role="region" id="allEntries" data-position="right">
+    <header class="fixed" id="menuStatic">
+        <menu type="toolbar">
+            <a id="backBtn" href="index.html">Back</a>
+        </menu>
+
+        <div id="monthdiv">
+        	<input type="image" src="images/actionicon_back_30x30.png" name="prev" id="prevMonth"/>
+        	<h1 id=month>Expenses</h1>
+        	<input type="image" src="images/actionicon_forward_30x30.png" name="next" id="nextMonth"/>
+        </div>
+        
+    </header>
+<br>
+
+<!-- show results in here -->
+<dl id="result"></dl>
+
+</section>
+
+<section role="region" id="form_edit" data-position="right">
+    <header class="fixed">
+        <menu type="toolbar">
+            <a id="updateItem" href="#">Save</a>
+        </menu>
+        <a id="cancelUpdateItem" href="#"><span class="icon icon-back">back</span>
+        </a>
+        <h1>Edit Entry</h1>
+    </header>
+<br>
+	<form>
+		<input type="text" name="desc" id="desc" placeholder="Description"/><br> 
+		<input type="date" name="date" id="date" placeholder="Today"/><br>
+		<input type="number" name="sum" id="sum" width="10" placeholder="Value" required/><br>
+		<input type="text" name="timestamp" id="timestamp" width="10"/><br>
+		<input type='button' value='Expense' id="ttype"/>
+	</form>
+</section>
+
+
+<!-- delete form dialog -->
+<form role="dialog" data-type="confirm" id="entry_delete">
+  	<section>
+	    <h1 id="delItemDesc">Confirmation</h1>
+	    <p>Are you sure you want to delete this item??</p>
+	</section>
+	<menu>
+	    <button>Cancel</button>
+	    <button class="danger" id="delItem">Delete</button>
+	</menu>
+</form>
+
+</body>
+
+<link rel="stylesheet" type="text/css" href="style/app.css"/>
+<script type="text/javascript" src="scripts/loadEntries.js"></script>
+
+</html>

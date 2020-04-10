@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Draw Chart</title>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+
+<link rel="stylesheet" type="text/css" href="style/headers.css"/>
+<link rel="stylesheet" type="text/css" href="style/lists.css" />
+<link rel="stylesheet" type="text/css" href="style/input_areas.css" />
+
+<script type="text/javascript" src="scripts/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="scripts/Chart.js"></script>
+<script type="text/javascript" src="scripts/manageDB.js"></script>
+<script type="text/javascript" src="scripts/drawChart.js"></script>
+
+</head>
+
+<body>
+	
+<section role="region" id="chart" data-position="right">
+    <header id="menuStatic" class="fixed">
+        <menu type="toolbar">
+<!--             <a id="new-button" href="#"><span class="icon icon-add">New</span></a> -->
+        </menu>
+        <a id="backToIndex" href="index.html"><span class="icon icon-back">back</span></a>
+<!--         <input type="image" src="images/actionicon_back_30x30.png" name="prev" id="prevMonth"/> -->
+<!--         	<input type="image" src="images/actionicon_forward_30x30.png" name="next" id="nextMonth"/> -->
+        <h1>Show Chart</h1>
+    </header>
+	<br>
+	
+	<input type="button" id="chartBtn" onclick="getChart('all', 'month')" value="A M" style="width: 50px; height: 3em;"/>
+	<input type="button" id="chartBtn" onclick="getChart('exp', 'month')" value="E M" style="width: 50px; height: 3em;"/>
+	<input type="button" id="chartBtn" onclick="getChart('inc', 'month')" value="I M" style="width: 50px; height: 3em;"/>
+	<input type="button" id="chartBtn" onclick="getChart('bal', 'month')" value="B M" style="width: 50px; height: 3em;"/>
+	<br>
+	<canvas id="myChart"></canvas>
+
+</section>
+
+</body>
+
+<link rel="stylesheet" type="text/css" href="style/app.css"/>
+<!-- <script type="text/javascript" src="scripts/loadActData.js"></script> -->
+
+</html>

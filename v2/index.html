@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Expense Manager</title>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+
+<link rel="stylesheet" type="text/css" href="style/headers.css"/>
+<link rel="stylesheet" type="text/css" href="style/lists.css" />
+<link rel="stylesheet" type="text/css" href="style/input_areas.css" />
+
+<script type="text/javascript" src="scripts/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="scripts/manageDB.js"></script>
+
+</head>
+
+<body>
+	
+<section role="region" id="result-sec" data-position="right">
+    <header class="fixed">
+        <menu type="toolbar">
+            <a id="new-button" href="#"><span class="icon icon-add">New</span></a>
+        </menu>
+        <a id="allEntries" href="allEntries.html"><span class="icon icon-menu">menu</span></a>
+        
+        <div id="monthdiv">
+        	<input type="image" src="images/actionicon_back_30x30.png" name="prev" id="prevMonth"/>
+        	<h1 id=month>Expenses</h1>
+        	<input type="image" src="images/actionicon_forward_30x30.png" name="next" id="nextMonth"/>
+        </div>
+        
+    </header>
+	<br>
+        
+<!-- 	Show results in separate div elements -->
+	<div id="total-wrap"><div id="resultInc"></div></div>
+	<div id="resultIncVal"></div>
+	<div id="clear"></div>
+	
+	<div id="total-wrap"><div id="resultExp"></div></div>
+	<div id="resultExpVal"></div>
+	<div id="clear"></div>
+	
+	<div id="total-wrap"><div id="resultSum"></div></div>
+	<div id="resultSumVal"></div>
+	<div id="clear"></div>
+	
+<!-- TODO: Disabled for now -->
+<!-- <a href="drawChart.html"> -->
+<!-- 	<img type="image" src="images/bar-chart.png" name="barChart" id="barChart"/> -->
+<!-- </a> -->
+</section>
+
+<section role="region" id="add-expense" data-position="right">
+    <header class="fixed">
+        <menu type="toolbar">
+            <a id="newEntry" href="#">Save</a>
+        </menu>
+        <a id="back-from-add" href="#"><span class="icon icon-back">back</span>
+        </a>
+        <h1>Add New Entry</h1>
+    </header>
+<br>
+	<form>
+		<input type="text" name="desc" id="desc" placeholder="Description"/><br> 
+		<input type="date" name="date" id="date" placeholder="Today"/><br>
+		<input type="number" name="sum" id="sum" width="10" placeholder="Value" required/><br>
+		<input type='button' value='Expense' id="ttype"/>
+	</form>
+</section>
+
+</body>
+
+<link rel="stylesheet" type="text/css" href="style/app.css"/>
+<script type="text/javascript" src="scripts/loadActData.js"></script>
+
+</html>

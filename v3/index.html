@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Expense Manager</title>
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+<link rel="stylesheet" type="text/css" href="style/headers.css"/>
+<link rel="stylesheet" type="text/css" href="style/lists.css" />
+<link rel="stylesheet" type="text/css" href="style/input_areas.css" />
+<link rel="stylesheet" type="text/css" href="style/jquery.mobile-1.4.5.min.css" />
+
+
+<script type="text/javascript" src="scripts/manageDB.js"></script>
+<script type="text/javascript" src="scripts/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- MAIN PAGE -->
+<div data-role="page" id="indexJ" data-title="Expense Manager" data-theme="a">
+	<section role="region" id="result-sec" data-position="right" class="skin-organic">
+	    <header class="fixed">
+	        <menu type="toolbar">
+	            <a id="add-button" href="#add-expenseJ"><span class="icon icon-add">New</span></a>
+	        </menu>
+	        <a id="showMenu" href="#menuJ"><span class="icon icon-menu">menu</span></a>
+	        
+	        <div id="monthdiv">
+	        	<input type="image" src="images/actionicon_back_30x30.png" name="prev" id="prevMonth"/>
+	        	<h1 id=month>Expenses</h1>
+	        	<input type="image" src="images/actionicon_forward_30x30.png" name="next" id="nextMonth"/>
+	        </div>
+	        
+	    </header>
+		<br>
+	        
+		<div id="total-wrap"><div id="resultInc"></div></div>
+		<div id="resultIncVal"></div>
+		<div id="clear"></div>
+		
+		<div id="total-wrap"><div id="resultExp"></div></div>
+		<div id="resultExpVal"></div>
+		<div id="clear"></div>
+		
+		<div id="total-wrap"><div id="resultSum"></div></div>
+		<div id="resultSumVal"></div>
+		<div id="clear"></div>
+		
+		<div id="total-wrap"><div id="resultBal"></div></div>
+		<div id="resultBalVal"></div>
+		<div id="clear"></div>
+		
+	</section>
+</div>
+
+<!-- ADD NEW ENTRY -->
+<div data-role="page" id="add-expenseJ" data-title="New Entry" data-theme="a">
+	<section role="region" id="add-expense" data-position="right" class="skin-organic">
+	    <header class="fixed">
+	        <menu type="toolbar">
+	            <a id="newEntry" href="#" data-rel="back">Save</a>
+	        </menu>
+	        <a id="back-from-add" href="#" data-rel="back"><span class="icon icon-back">back</span></a>
+	        <h1>Add New Entry</h1>
+	    </header>
+	<br>
+		<form>
+			<input type="text" name="desc" id="desc" placeholder="Description"/>
+			<input type="date" name="date" id="date" placeholder="Today"/>
+			<input type="number" name="sum" id="sum" width="10" placeholder="Value" required autofocus/>
+	
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="false">
+	<!--     	<legend>Transaction:</legend> -->
+	         	<input type="radio" name="ttype_radio" id="Income" value="inc" />
+	         	<label for="Income">Income</label>
+	
+	         	<input type="radio" name="ttype_radio" id="Expense" value="exp" checked="checked" />
+	         	<label for="Expense">Expense</label>
+	    	</fieldset>
+		</form>
+	</section>
+</div>
+
+<!-- MENU -->
+<div data-role="page" id="menuJ" data-title="Menu" data-theme="a">
+	<section role="region" id="menu" data-position="right" class="skin-organic">
+	    <header class="fixed">
+	        <menu type="toolbar">
+	            <a id="back-from-menu" href="#" data-rel="back">Back</a>
+	        </menu>
+	        <h1>Menu</h1>
+	    </header>
+	    <a id="allEntriesJ" href="#allEntriesJ" data-role="button" data-mini="false">List Entries</a>
+	    <a id="Currency" href="#listCurrency" data-role="button" data-mini="false">Currency</a>
+	    <a id="Balance" href="#enterBalance" data-role="button" data-mini="false">Balance</a>
+	</section>
+</div><!-- /page -->
+
+<!-- LIST ENTRIES -->
+<div data-role="page" id="allEntriesJ" data-title="All Entries" data-theme="a">
+	<section role="region" id="allEntries" data-position="right" class="skin-organic">
+	    <header class="fixed" id="menuStatic">
+	        <menu type="toolbar">
+	            <a id="backFromList" href="#" data-rel="back">Back</a>
+	        </menu>
+	        <div id="monthdiv">
+	        	<input type="image" src="images/actionicon_back_30x30.png" name="prev" id="prevMonthList"/>
+	        	<h1 id=monthList>Expenses</h1>
+	        	<input type="image" src="images/actionicon_forward_30x30.png" name="next" id="nextMonthList"/>
+	        </div>
+	    </header>
+	<br>
+	<!-- show results in here -->
+	<dl id="result"></dl>
+	
+	</section>	
+</div><!-- /page -->
+
+<!-- SELECT CURRENCY -->
+<div data-role="page" class="type-interior" id="listCurrency">
+	<section role="region" id="currency" data-position="right" class="skin-organic">
+	    <header class="fixed" id="menuStatic">
+	        <menu type="toolbar">
+	            <a id="backBtn" href="#" data-rel="back">Back</a>
+	        </menu>
+	        <h1>Select Currency</h1>
+	    </header>
+	<br>
+
+	<div data-role="content">
+			<div class="content-primary">
+			<ul data-role="listview">
+				<li><a id="euro" href="#" data-rel="back"><img src="images/EU.png" alt="EU" class="ui-li-icon">Euro</a></li>
+				<li><a id="dollar" href="#" data-rel="back"><img src="images/US.png" alt="US" class="ui-li-icon">Dollar </a></li>
+				<li><a id="pound" href="#" data-rel="back"><img src="images/GB.png" alt="GB" class="ui-li-icon">Pound </a></li>
+				<li><a id="yen" href="#" data-rel="back"><img src="images/JP.png" alt="JP" class="ui-li-icon">Yen </a></li>
+			</ul>
+			</div><!--/content-primary -->		
+	</div><!-- /content -->
+	
+	</section>	
+</div><!-- /page -->
+
+<!-- ACCOUNT BALANCE -->
+<div data-role="page" id="enterBalance">
+	<section role="region" id="currency" data-position="right" class="skin-organic">
+	    <header class="fixed" id="menuStatic">
+	        <menu type="toolbar">
+	            <a id="balanceSave" href="#" data-rel="back">Save</a>
+	        </menu>
+	        <a id="back-from-balance" href="#" data-rel="back"><span class="icon icon-back">back</span></a>
+	        <h1>Account Balance</h1>
+	    </header>
+	<br>
+
+	<div data-role="main" class="ui-content">
+	<!--     <form method="post" action="demoform.asp"> -->
+	    <div class="ui-field-contain">
+	<!--         <label for="info">Account Balance:</label> -->
+<!-- 	      <textarea name="listBalanceSum" id="info"></textarea> -->
+			<input type="number" name="sum" id="balanceSum" width="10" placeholder="Balance" autofocus/>
+	    </div>
+	<!--       <input type="submit" data-inline="true" value="Submit"> -->
+<!-- 	    <a id="listBalanceOK" href="#" data-role="button" data-mini="false" data-inline="true" data-rel="back">OK</a> -->
+<!-- 	    <a id="listBalanceCancel" href="#" data-role="button" data-mini="false" data-inline="true" data-rel="back">Cancel</a> -->
+	<!--     </form>  -->
+	</div>
+</div>
+
+<!-- EDIT ENTRY -->
+<div data-role="page" id="form_editJ" data-title="Edit Entry" data-theme="a">
+	<section role="region" id="form_edit" data-position="right" class="skin-organic">
+	    <header class="fixed">
+	        <menu type="toolbar">
+	            <a id="updateItem" href="#">Save</a>
+	        </menu>
+	        <a id="cancelUpdateItem" href="#" data-rel="back"><span class="icon icon-back">back</span>
+	        </a>
+	        <h1>Edit Entry</h1>
+	    </header>
+	<br>
+		<form>
+			<input type="text" name="desc" id="descUF" placeholder="Description"/> 
+			<input type="date" name="date" id="dateUF" placeholder="Today"/>
+			<input type="number" name="sum" id="sumUF" width="10" placeholder="Value" required/>
+			<input type="text" name="timestamp" id="timestampUF" width="10" />
+			<fieldset id="fsUF" data-role="controlgroup" data-type="horizontal" data-mini="false">
+	<!--     	<legend>Transaction:</legend> -->
+	         	<input type="radio" name="radioUF" id="IncomeUF" value="inc"/>
+	         	<label for="IncomeUF">Income</label>
+	
+	         	<input type="radio" name="radioUF" id="ExpenseUF" value="exp" checked="checked"/>
+	         	<label for="ExpenseUF">Expense</label>
+	    	</fieldset>
+	    	<p id="editEvent"></p>
+		</form>
+		
+		<p id="delEvent"></p>
+		<a href="#" data-role="button" data-rel="back" data-theme="b" id="delItem">Delete</a>
+	</section>
+	
+</div><!-- /page -->
+
+</body>
+
+<link rel="stylesheet" type="text/css" href="style/app.css"/>
+<script type="text/javascript" src="scripts/loadActData.js"></script>
+
+</html>

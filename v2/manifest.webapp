@@ -1,0 +1,19 @@
+{
+  "name": "Expense Manager v2",
+  "description": "This app serves for expense tracking.",
+  "launch_path": "/index.html",
+  "version": "1.1",
+  "icons": {
+    "60": "/images/shroom-60.png",
+    "128": "/images/shroom-128.png"
+  },
+  "developer": {
+    "name": "Krisko",
+    "url": "http://krisko210.blogspot.com"
+  },
+   "permissions": {
+		"desktop-notification": {
+		"description": "Needed for creating system notifications."
+	}
+  }
+}
